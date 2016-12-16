@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- editado con XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) por Jorge Heredia (Itehl Consulting) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://itehl.com/education/schema/modalitytype/v1/"
+        targetNamespace="http://itehl.com/education/schema/modalitytype/v1/"
+         xmlns:cat="http://itehl.com/fwk/schema/catalogtype/v1/"
+         xmlns:com="http://itehl.com/fwk/schema/Commontype/v1/"
+        xmlns:daf="http://itehl.com/fwk/schema/dynamicattributetype/v1/"
+              xmlns:ent="http://itehl.com/fwk/schema/entitytype/v1/"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <annotation>
+    <documentation>
+      Este tipo de dato representa la información de las modalidades de los cursos.
+    </documentation>
+  </annotation>
+  <import namespace="http://itehl.com/fwk/schema/catalogtype/v1/" schemaLocation="../../Framework/Entity/CatalogType.xsd"/>
+  <import namespace="http://itehl.com/fwk/schema/commontype/v1/" schemaLocation="../../Framework/Utility/CommonType.xsd"/>
+  <import namespace="http://itehl.com/fwk/schema/dynamicattributetype/v1/" schemaLocation="../../Framework/Entity/DynamicAttributeType.xsd"/>
+  <import namespace="http://itehl.com/fwk/schema/entitytype/v1/" schemaLocation="../../Framework/Entity/EntityType.xsd"/>
+
+  <complexType name="modalitytype">
+    <complexContent>
+      <extension base="ent:EntityType">
+        <sequence>
+          <element name="Guid" type="int"/>
+          <element name="CourseGuid" type="int"/>
+          <element name="Mode" type="string"/>
+          <element name="Prise" type="double"/>
+          <element name="status" type="boolean"/>
+          
+
+          <element name="DynamicParams" type="daf:DynamicAttributeType" maxOccurs="unbounded"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <element name="modalityTypeMsg">
+    <complexType>
+      <sequence>
+        <element name="modality" type="tns:modalitytype"/>
+      </sequence>
+    </complexType>
+  </element>
+
+</schema>

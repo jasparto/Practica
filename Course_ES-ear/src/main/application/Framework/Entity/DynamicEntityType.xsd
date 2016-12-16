@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- editado con XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) por Jorge Heredia (Itehl Consulting) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+xmlns:tns="http://itehl.com/fwk/schema/dynamicentitytype/v1/" xmlns:com="http://itehl.com/fwk/schema/commontype/v1/"
+ xmlns:daf="http://itehl.com/fwk/schema/dynamicattributetype/v1/" 
+ xmlns:ent="http://itehl.com/fwk/schema/entitytype/v1/"
+ targetNamespace="http://itehl.com/fwk/schema/dynamicentitytype/v1/" 
+elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<annotation>
+		<documentation>
+      Este tipo de dato representa la información de las entidades  .
+    </documentation>
+	</annotation>
+	<import namespace="http://itehl.com/fwk/schema/commontype/v1/" schemaLocation="../Utility/CommonType.xsd"/>
+	<import namespace="http://itehl.com/fwk/schema/dynamicattributetype/v1/" schemaLocation="DynamicAttributeType.xsd"/>
+  <import namespace="http://itehl.com/fwk/schema/entitytype/v1/" schemaLocation="EntityType.xsd"/>
+	<complexType name="DynamicEntityType">
+    <complexContent>
+      <extension base="ent:EntityType">
+        <sequence>
+
+          <element name="Name" type="string"/>
+          <element name="Description" type="string"/>
+          <element name="Status" type="boolean"/>
+          <element name="CreateDate" type="dateTime"/>
+
+        </sequence>
+      </extension>
+    </complexContent>
+	</complexType>
+	
+  <element name="DinamicEntityTypeMsg">
+		<complexType>
+			<sequence>
+				<element name="DynamicEntity" type="tns:DynamicEntityType"/>
+			</sequence>
+		</complexType>
+	</element>
+  
+	<element name="DeleteEntityRequestType">
+		<complexType>
+			<sequence>
+				<element name="Guid" type="string"/>
+				<element name="UserGuid" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+  <!--GetEntityById-->
+	<element name="GetEntityByIdRequestType">
+		<complexType>
+			<sequence>
+                                      <element name="Guid" type="string"/>
+                                      <element name="UserGuid" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetEntityByIdResponseType">
+		<complexType>
+			<sequence>
+				<element name="DynamicEntity" type="tns:DynamicEntityType" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+  <!--GetEntityByDescription-->
+  <element name="GetEntityByDescriptionRequestType">
+    <complexType>
+      <sequence>
+              <element name="UserGuid" type="string"/>
+        <element name="Description" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GetEntityByDescriptionResponseType">
+    <complexType>
+      <sequence>
+        <element name="DynamicEntity" type="tns:DynamicEntityType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+  <!--GetEntityByName-->
+  <element name="GetEntityByNameRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Name" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GetEntityByNameResponseType">
+    <complexType>
+      <sequence>
+        <element name="DynamicEntity" type="tns:DynamicEntityType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+  <!--GetEntityByStatus-->
+  <element name="GetEntityByStatusRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Status" type="boolean"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GetEntityByStatusResponseType">
+    <complexType>
+      <sequence>
+        <element name="DynamicEntity" type="tns:DynamicEntityType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+  <!--GetEntityByDynamicParams-->
+  <element name="GetEntityByDynamicParamsRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="DynamicParams" type="string" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GetEntityByDynamicParamsResponseType">
+    <complexType>
+      <sequence>
+        <element name="DynamicEntity" type="tns:DynamicEntityType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+  
+</schema>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- editado con XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) por Jorge Heredia (Itehl Consulting) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://itehl.com/fwk/schema/catalogtype/v1/" xmlns:daf="http://itehl.com/fwk/schema/dynamicattributetype/v1/" xmlns:ent="http://itehl.com/fwk/schema/entitytype/v1/" targetNamespace="http://itehl.com/fwk/schema/catalogtype/v1/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!--   xmlns:com="http://itehl.com/fwk/schema/commontype/v1/"-->
+	<annotation>
+		<documentation>
+      Este tipo de dato representa la información de los Catalogos .
+    </documentation>
+	</annotation>
+	<!--  <import namespace="http://itehl.com/fwk/schema/commontype/v1/" schemaLocation="../Utility/CommonType.xsd"/>-->
+	<import namespace="http://itehl.com/fwk/schema/dynamicattributetype/v1/" schemaLocation="DynamicAttributeType.xsd"/>
+	<import namespace="http://itehl.com/fwk/schema/entitytype/v1/" schemaLocation="EntityType.xsd"/>
+	<complexType name="CatalogType">
+		<complexContent>
+			<extension base="ent:EntityType">
+				<sequence>
+					<element name="Name" type="string"/>
+					<element name="Value" type="string"/>
+					<element name="FatherId" type="int"/>
+					<element name="SonId" type="int"/>
+					<element name="Level" type="int"/>
+					<element name="DynamicParams" type="daf:DynamicAttributeType" maxOccurs="unbounded"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="CatalogTypeMsg">
+		<complexType>
+			<sequence>
+				<element name="Catalog" type="tns:CatalogType"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!--GetCatalogById-->
+	<element name="GetCatalogByIdRequestType">
+		<complexType>
+			<sequence>
+				<element name="UserGuid" type="string"/>
+				<element name="Guid" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetCatalogByIdResponseType">
+		<complexType>
+			<sequence>
+				<element name="Catalog" type="tns:CatalogType" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!--GetCatalogByUser-->
+	<element name="GetCatalogByUserRequestType">
+		<complexType>
+			<sequence>
+				<element name="UserGuid" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetCatalogByUserResponseType">
+		<complexType>
+			<sequence>
+				<element name="Catalog" type="tns:CatalogType" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!--GetCatalogByName-->
+	<element name="GetCatalogByNameRequestType">
+		<complexType>
+			<sequence>
+				<element name="UserGuid" type="string"/>
+				<element name="Name" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetCatalogByNameResponseType">
+		<complexType>
+			<sequence>
+				<element name="Catalog" type="tns:CatalogType" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!--GetCatalogByValue-->
+	<element name="GetCatalogByValueRequestType">
+		<complexType>
+			<sequence>
+				<element name="UserGuid" type="string"/>
+				<element name="Value" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetCatalogByValueResponseType">
+		<complexType>
+			<sequence>
+				<element name="Catalog" type="tns:CatalogType" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!--GetCatalogBySonId-->
+	<element name="GetCatalogBySonIdRequestType">
+		<complexType>
+			<sequence>
+				<element name="UserGuid" type="string"/>
+				<element name="SonId" type="int"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetCatalogBySonIdResponseType">
+		<complexType>
+			<sequence>
+				<element name="Catalog" type="tns:CatalogType" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!--GetCatalogByFatherId-->
+	<element name="GetCatalogByFatherIdRequestType">
+		<complexType>
+			<sequence>
+				<element name="UserGuid" type="string"/>
+				<element name="FatherId" type="int"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetCatalogByFatherIdResponseType">
+		<complexType>
+			<sequence>
+				<element name="Catalog" type="tns:CatalogType" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!--GetCatalogByStatus-->
+	<element name="GetCatalogByStatusRequestType">
+		<complexType>
+			<sequence>
+				<element name="UserGuid" type="string"/>
+				<element name="Status" type="boolean"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetCatalogByStatusResponseType">
+		<complexType>
+			<sequence>
+				<element name="Catalog" type="tns:CatalogType" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!--GetCatalogByLevel-->
+	<element name="GetCatalogByLevelRequestType">
+		<complexType>
+			<sequence>
+				<element name="UserGuid" type="string"/>
+				<element name="Level" type="int"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetCatalogByLevelResponseType">
+		<complexType>
+			<sequence>
+				<element name="Catalog" type="tns:CatalogType" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!--GetCatalogByDynamicParams-->
+	<element name="GetCatalogByDynamicParamsRequestType">
+		<complexType>
+			<sequence>
+				<element name="UserGuid" type="string"/>
+				<element name="DynamicParams" type="string" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetCatalogByDynamicParamsResponseType">
+		<complexType>
+			<sequence>
+				<element name="Catalog" type="tns:CatalogType" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!--CatalogSonsByFatherId-->
+	<element name="GetCatalogSonsByFatherIdRequestType">
+		<complexType>
+			<sequence>
+				<element name="UserGuid" type="string"/>
+				<element name="FatherId" type="int"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetCatalogSonsByFatherIdResponseType">
+		<complexType>
+			<sequence>
+				<element name="Catalog" type="tns:CatalogType" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+
+
+	<element name="DeleteCatalogRequestType">
+		<complexType>
+			<sequence>
+				<element name="UserGuid" type="string"/>
+				<element name="Guid" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="DeleteCatalogResponseType">
+		<complexType>
+			<sequence>
+				<element name="Status" type="boolean"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- editado con XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) por Jorge Heredia (Itehl Consulting) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://itehl.com/education/schema/topicstype/v1/"
+        targetNamespace="http://itehl.com/education/schema/topicstype/v1/" 
+         xmlns:cat="http://itehl.com/fwk/schema/catalogtype/v1/"
+         xmlns:com="http://itehl.com/fwk/schema/Commontype/v1/"
+        xmlns:daf="http://itehl.com/fwk/schema/dynamicattributetype/v1/" 
+              xmlns:ent="http://itehl.com/fwk/schema/entitytype/v1/"
+              xmlns:cou="http://itehl.com/education/schema/coursetype/v1/"
+              xmlns:afi="http://itehl.com/education/schema/affiliatetype/v1/"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<annotation>
+		<documentation>
+			Este tipo de dato representa la información de los temarios de los cursos.
+		</documentation>
+	</annotation>
+  <import namespace="http://itehl.com/fwk/schema/catalogtype/v1/" schemaLocation="../../Framework/Entity/CatalogType.xsd"/>
+  <import namespace="http://itehl.com/fwk/schema/commontype/v1/" schemaLocation="../../Framework/Utility/CommonType.xsd"/>
+  <import namespace="http://itehl.com/fwk/schema/dynamicattributetype/v1/" schemaLocation="../../Framework/Entity/DynamicAttributeType.xsd"/>
+  <import namespace="http://itehl.com/fwk/schema/entitytype/v1/" schemaLocation="../../Framework/Entity/EntityType.xsd"/>
+  <import namespace="http://itehl.com/education/schema/coursetype/v1/" schemaLocation="CourseType.xsd"/>
+
+  <complexType name="TopicsType">
+    <complexContent>
+      <extension base="ent:EntityType">
+        <sequence>
+    
+      <element name="Name" type="string"/>
+      <element name="Description" type="string"/>
+          <element name="Courses" type="cou:CourseType" maxOccurs="unbounded"/>
+    
+      <element name="DynamicParams" type="daf:DynamicAttributeType" maxOccurs="unbounded"/>
+        </sequence>
+      </extension>
+    </complexContent>
+	</complexType>
+
+  <element name="TopicsTypeMsg">
+    <complexType>
+      <sequence>
+        <element name="Topics" type="tns:TopicsType"/>
+      </sequence>
+    </complexType>
+  </element>
+  
+</schema>

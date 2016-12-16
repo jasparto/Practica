@@ -1,0 +1,1302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Updateado con XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) por Jorge Heredia (Itehl Consulting) -->
+<wsdl:definitions xmlns:tns="http://itehl.com/education/contract/es/courseservice/v1/"
+                  xmlns:com="http://itehl.com/fwk/schema/commontype/v1/"
+                  xmlns:course="http://itehl.com/education/schema/coursetype/v1/" 
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:ns="http://itehl.com/education/schema/topicstype/v1/" 
+                  xmlns:ns1="http://itehl.com/fwk/schema/catalogtype/v1/"
+                  xmlns:ns2="http://itehl.com/fwk/schema/dynamicattributetype/v1/" 
+                  xmlns:ns3="http://itehl.com/fwk/schema/dynamicvaluetype/v1/"
+                  xmlns:ns4="http://itehl.com/fwk/schema/entitytype/v1/" 
+                  name="ICourseES" targetNamespace="http://itehl.com/education/contract/es/courseservice/v1/">
+	
+  <wsdl:types>
+		<xsd:schema targetNamespace="http://itehl.com/iteducation/schema/">
+			<xsd:import namespace="http://itehl.com/education/schema/coursetype/v1/" schemaLocation="../CourseType.xsd"/>
+			<xsd:import namespace="http://itehl.com/fwk/schema/commontype/v1/" schemaLocation="../../../Framework/Utility/CommonType.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+  
+	<wsdl:message name="CreateCourseMsgRequest">
+		<wsdl:part name="requestParam" element="course:CourseTypeMsg"/>
+	</wsdl:message>	
+  <wsdl:message name="CreateCourseMsgResponse">
+		<wsdl:part name="responseParam" element="com:txStatusType"/>
+	</wsdl:message>
+	
+  
+  <wsdl:message name="CreateTopicMsgRequest">
+		<wsdl:part name="requestParam" element="course:TopicsTypeMsg"/>
+	</wsdl:message>
+	<wsdl:message name="CreateTopicMsgResponse">
+		<wsdl:part name="responseParam" element="com:txStatusType"/>
+	</wsdl:message>
+  
+  <wsdl:message name="CreateModeMsgRequest">
+    <wsdl:part name="requestParam" element="course:modeTypeMsg"/>
+  </wsdl:message>
+  <wsdl:message name="CreateModeMsgResponse">
+    <wsdl:part name="responseParam" element="com:txStatusType"/>
+  </wsdl:message>
+  
+  <wsdl:message name="UpdateCourseMsgRequest">
+		<wsdl:part name="requestParam" element="course:CourseTypeMsg"/>
+	</wsdl:message>
+	<wsdl:message name="UpdateCourseMsgResponse">
+		<wsdl:part name="responseParam" element="com:txStatusType"/>
+	</wsdl:message>
+
+  <wsdl:message name="UpdateStatusCourseMsgRequest">
+    <wsdl:part name="requestParam" element="course:CourseTypeMsg"/>
+  </wsdl:message>
+  <wsdl:message name="UpdateStatusCourseResponse">
+    <wsdl:part name="responseParam" element="com:txStatusType"/>
+  </wsdl:message>
+  
+  <wsdl:message name="UpdateTopicMsgRequest">
+		<wsdl:part name="requestParam" element="course:TopicsTypeMsg"/>
+	</wsdl:message>
+	<wsdl:message name="UpdateTopicMsgResponse">
+		<wsdl:part name="responseParam" element="com:txStatusType"/>
+	</wsdl:message>
+
+  <wsdl:message name="UpdateStatusTopicMsgRequest">
+    <wsdl:part name="requestParam" element="course:TopicsTypeMsg"/>
+  </wsdl:message>
+  <wsdl:message name="UpdateStatusTopicMsgResponse">
+    <wsdl:part name="responseParam" element="com:txStatusType"/>
+  </wsdl:message>
+ 
+  <wsdl:message name="UpdateModeMsgRequest">
+    <wsdl:part name="requestParam" element="course:modeTypeMsg"/>
+  </wsdl:message>
+  <wsdl:message name="UpdateModeMsgResponse">
+    <wsdl:part name="responseParam" element="com:txStatusType"/>
+  </wsdl:message> 
+  
+  <wsdl:message name="DeleteCourseMsgRequest">
+		<wsdl:part name="requestParam" element="course:DeleteCourseRequestType"/>
+	</wsdl:message>
+	<wsdl:message name="DeleteCourseMsgResponse">
+		<wsdl:part name="responseParam" element="com:txStatusType"/>
+	</wsdl:message>
+	
+  
+  <wsdl:message name="DeleteTopicMsgRequest">
+		<wsdl:part name="requestParam" element="course:DeleteTopicsRequestType"/>
+	</wsdl:message>
+	<wsdl:message name="DeleteTopicMsgResponse">
+		<wsdl:part name="responseParam" element="com:txStatusType"/>
+	</wsdl:message>
+
+
+   <wsdl:message name="DeleteModeMsgRequest">
+     <wsdl:part name="requestParam" element="course:DeleteModeRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteModeMsgResponse">
+    <wsdl:part name="responseParam" element="com:txStatusType"/>
+  </wsdl:message>
+  
+  <!-- Get course by id-->
+  <wsdl:message name="GetCourseByIdMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCourseByIdRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCourseByIdMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCourseByIdResponseType"/>
+  </wsdl:message>
+
+  <!--get Topic By Id -->
+  <wsdl:message name="GetTopicByIdMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetTopicByIdRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetTopicByIdMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetTopicByIdResponseType"/>
+  </wsdl:message>
+
+  <!--get course By name -->
+  <wsdl:message name="GetCoursesByUserMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesByUserRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesByUserMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCoursesByUserResponseType"/>
+  </wsdl:message>
+  <!--get course By name -->
+  <wsdl:message name="GetCoursesByNameMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesByNameRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesByNameMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCoursesByNameResponseType"/>
+  </wsdl:message>
+
+
+  <!--Get course By Description -->
+  <wsdl:message name="GetCoursesByDescriptionMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesByDescriptionRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesByDescriptionMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCoursesByDescriptionResponseType"/>
+  </wsdl:message>
+
+  <!--Get course By Author -->
+  <wsdl:message name="GetCoursesByAuthorMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesByAuthorRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesByAuthorMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCoursesByAuthorResponseType"/>
+  </wsdl:message>
+
+  <!--get course By Level -->
+  <wsdl:message name="GetCoursesByLevelMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesByLevelRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesByLevelMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCoursesByLevelResponseType"/>
+  </wsdl:message>
+
+  <!--getcourse By Score -->
+  <wsdl:message name="GetCoursesByScoreMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesByScoreRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesByScoreMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCoursesByScoreResponseType"/>
+  </wsdl:message>
+
+  <!--get course By Target -->
+  <wsdl:message name="GetCoursesByTargetMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesByTargetRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesByTargetMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCoursesByTargetResponseType"/>
+  </wsdl:message>
+
+  <!--get course By Status -->
+  <wsdl:message name="GetCoursesByStatusMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesByStatusRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesByStatusMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCoursesByStatusResponseType"/>
+  </wsdl:message>
+
+  <!--get course By Hours -->
+  <wsdl:message name="GetCoursesByHoursMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesByHoursRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesByHoursMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCoursesByHoursResponseType"/>
+  </wsdl:message>
+
+  <!--Get course By Category -->
+  <wsdl:message name="GetCoursesByCategoryMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesByCategoryRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesByCategoryMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCoursesByCategoryResponseType"/>
+  </wsdl:message>
+
+  <!--get course By ReleaseDate -->
+  <wsdl:message name="GetCoursesByReleaseDateMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesByReleaseDateRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesByReleaseDateMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCoursesByReleaseDateResponseType"/>
+  </wsdl:message>
+
+
+
+  <!--get course By DynamicParams -->
+  <wsdl:message name="GetCoursesByDynamicParamsMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesByDynamicParamsRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesByDynamicParamsMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCoursesByReleaseDateResponseType"/>
+  </wsdl:message>
+  <!--get course By Mode -->
+  <wsdl:message name="GetCoursesByModeMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesByModeRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesByModeMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCoursesByModeResponseType"/>
+  </wsdl:message>
+
+  <!--get course By Price -->
+  <wsdl:message name="GetCoursesByPriceMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesByPriceRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesByPriceMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCoursesByPriceResponseType"/>
+  </wsdl:message>
+
+  <!--get Topic ByCourse -->
+  <wsdl:message name="GetTopicsByCourseMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetTopicsByCourseRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetTopicsByCourseMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetTopicsByCourseResponseType"/>
+  </wsdl:message>
+  <!--get Topic By Name -->
+  <wsdl:message name="GetTopicsByNameMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetTopicsByNameRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetTopicsByNameMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetTopicsByNameResponseType"/>
+  </wsdl:message>
+
+  <!--get Topic By User-->
+  <wsdl:message name="GetTopicsByUserMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetTopicsByUserRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetTopicsByUserMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetTopicsByUserResponseType"/>
+  </wsdl:message>
+
+  <!--get Topic By Description -->
+  <wsdl:message name="GetTopicsByDescriptionMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetTopicsByDescriptionRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetTopicsByDescriptionMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetTopicsByDescriptionResponseType"/>
+  </wsdl:message>
+
+  <!--get Topic By status -->
+  <wsdl:message name="GetTopicsByStatusMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetTopicsByStatusRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetTopicsByStatusMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetTopicsByStatusResponseType"/>
+  </wsdl:message>
+
+  
+  <!--get CoursesModeById -->
+  
+  <wsdl:message name="GetModeByIdMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetModeByIdRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetModeByIdMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetModeByIdResponseType"/>
+  </wsdl:message>
+
+  <!--GetModeByMode-->
+  <wsdl:message name="GetModeByModeMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetModeByModeRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetModeByModeMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetModeByModeResponseType"/>
+  </wsdl:message>
+
+  <!-- GetModeByPriceMsgRequest -->
+ 
+  <wsdl:message name="GetModeByPriceMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetModeByPriceRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetModeByPriceMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetModeByPriceResponseType"/>
+  </wsdl:message>
+
+  <!--get GetCoursesModalityByStatus -->
+  <!--
+  <wsdl:message name="GetCoursesModalityByStatusMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesModalityByPriseRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesModalityByStatusMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCoursesModalityByPriseResponseType"/>
+  </wsdl:message> -->
+
+  <!--get  GetCoursesByAffiliate -->
+  <wsdl:message name="GetCoursesByAffiliateMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesByAffiliateRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesByAffiliateMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCourseByAffiliateResponseType"/>
+  </wsdl:message>
+
+  <!--get  GetCoursesByClassroom -->
+  <wsdl:message name="GetCoursesByClassroomMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesByClassroomRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesByClassroomMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCoursesByClassroomResponseType"/>
+  </wsdl:message>
+
+
+  <!--get  GetCoursesByMaterial -->
+  <wsdl:message name="GetCoursesByMaterialMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesByMaterialRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesByMaterialMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCoursesByMaterialResponseType"/>
+  </wsdl:message>
+
+  <!--get  GetCoursesByDelivery -->
+  <wsdl:message name="GetCoursesByDeliveryMsgRequest">
+    <wsdl:part name="requestParam" element="course:GetCoursesByDeliveryRequestType"/>
+  </wsdl:message>
+  <wsdl:message name="GetCoursesByDeliveryMsgResponse">
+    <wsdl:part name="responseParam" element="course:GetCoursesByDeliveryResponseType"/>
+  </wsdl:message>
+  
+  <wsdl:message name="BusinessExceptionMsg">
+		<wsdl:part name="exception" element="com:BusinessExceptionType">
+	</wsdl:part>
+	</wsdl:message>
+	
+  
+  <wsdl:portType name="CourseESInterface">
+
+    <!-- 1Create course -->
+    <wsdl:operation name="CreateCourse">
+			<wsdl:input message="tns:CreateCourseMsgRequest">
+      </wsdl:input>
+			<wsdl:output message="tns:CreateCourseMsgResponse">
+      </wsdl:output>
+			<wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+		</wsdl:operation>
+
+    <!--2 Create topic-->
+    <wsdl:operation name="CreateTopic">
+			<wsdl:input message="tns:CreateTopicMsgRequest">
+      </wsdl:input>
+			<wsdl:output message="tns:CreateTopicMsgResponse">
+      </wsdl:output>
+			<wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+		</wsdl:operation>
+
+    <!--3 Create modality-->
+  
+    <wsdl:operation name="CreateMode">
+      <wsdl:input message="tns:CreateModeMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:CreateModeMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--4 Update course-->
+    <wsdl:operation name="UpdateCourse">
+			<wsdl:input message="tns:UpdateCourseMsgRequest">
+      </wsdl:input>
+			<wsdl:output message="tns:UpdateCourseMsgResponse">
+      </wsdl:output>
+			<wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+		</wsdl:operation>
+    <!--5 Update topic-->
+    <wsdl:operation name="UpdateTopic">
+			<wsdl:input message="tns:UpdateTopicMsgRequest">
+      </wsdl:input>
+			<wsdl:output message="tns:UpdateTopicMsgResponse">
+      </wsdl:output>
+			<wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+		</wsdl:operation>
+
+    <!--6 Update modality-->
+   
+   <wsdl:operation name="UpdateMode">
+      <wsdl:input message="tns:UpdateModeMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:UpdateModeMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--7 delete topic-->
+    <wsdl:operation name="DeleteTopic">
+			<wsdl:input message="tns:DeleteTopicMsgRequest">
+      </wsdl:input>
+			<wsdl:output message="tns:DeleteTopicMsgResponse">
+      </wsdl:output>
+			<wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+		</wsdl:operation>
+    <!--8 delete course-->
+    <wsdl:operation name="DeleteCourse">
+			<wsdl:input message="tns:DeleteCourseMsgRequest">
+      </wsdl:input>
+			<wsdl:output message="tns:DeleteCourseMsgResponse">
+      </wsdl:output>
+			<wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+		</wsdl:operation>
+    <!--9 Delete mode-->
+     <wsdl:operation name="DeleteMode">
+      <wsdl:input message="tns:DeleteModeMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:DeleteModeMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+    <!--10 Get course by id-->
+    <wsdl:operation name="GetCourseById">
+      <wsdl:input message="tns:GetCourseByIdMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCourseByIdMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!-- 11 get Topic By Id -->
+    <wsdl:operation name="GetTopicById">
+      <wsdl:input message="tns:GetTopicByIdMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetTopicByIdMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+    
+    
+    <wsdl:operation name="GetCoursesByUser">
+      <wsdl:input message="tns:GetCoursesByUserMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesByUserMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--12get course By name -->
+    <wsdl:operation name="GetCoursesByName">
+      <wsdl:input message="tns:GetCoursesByNameMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesByNameMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--13 Get course By Description -->
+    <wsdl:operation name="GetCoursesByDescription">
+      <wsdl:input message="tns:GetCoursesByDescriptionMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesByDescriptionMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--14 Get course By Author -->
+    <wsdl:operation name="GetCoursesByAuthor">
+      <wsdl:input message="tns:GetCoursesByAuthorMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesByAuthorMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--15 get course By Level -->
+    <wsdl:operation name="GetCoursesByLevel">
+      <wsdl:input message="tns:GetCoursesByLevelMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesByLevelMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--16 getcourse By Score -->
+    <wsdl:operation name="GetCoursesByScore">
+      <wsdl:input message="tns:GetCoursesByScoreMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesByScoreMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--17 get course By Target -->
+    <wsdl:operation name="GetCoursesByTarget">
+      <wsdl:input message="tns:GetCoursesByTargetMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesByTargetMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--18 get course By Status -->
+    <wsdl:operation name="GetCoursesByStatus">
+      <wsdl:input message="tns:GetCoursesByStatusMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesByStatusMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+  
+    <!--19 get course By Hours -->
+
+    <wsdl:operation name="GetCoursesByHours">
+      <wsdl:input message="tns:GetCoursesByHoursMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesByHoursMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+
+    <!--20 get course By Category -->
+
+    <wsdl:operation name="GetCoursesByCategory">
+      <wsdl:input message="tns:GetCoursesByCategoryMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesByCategoryMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+   
+    <!--21 get course By ReleaseDate -->
+    <wsdl:operation name="GetCoursesByReleaseDate">
+      <wsdl:input message="tns:GetCoursesByReleaseDateMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesByReleaseDateMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--22 get course By Mode -->
+   
+    <wsdl:operation name="GetCoursesByMode">
+      <wsdl:input message="tns:GetCoursesByModeMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesByModeMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+   
+    <!--23 get course By Price -->
+    <wsdl:operation name="GetCoursesByPrice">
+      <wsdl:input message="tns:GetCoursesByPriceMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesByPriceMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--24 get Topic By Name -->
+    <wsdl:operation name="GetTopicsByName">
+      <wsdl:input message="tns:GetTopicsByNameMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetTopicsByNameMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+    
+    <!--24 get Topic By User -->
+    <wsdl:operation name="GetTopicsByUser">
+      <wsdl:input message="tns:GetTopicsByUserMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetTopicsByUserMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+    
+
+    <!--25 get Topic By Description -->
+    <wsdl:operation name="GetTopicsByDescription">
+      <wsdl:input message="tns:GetTopicsByDescriptionMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetTopicsByDescriptionMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--26 get Topic By status -->
+    <wsdl:operation name="GetTopicsByStatus">
+      <wsdl:input message="tns:GetTopicsByStatusMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetTopicsByStatusMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+
+    <!--27 get CoursesModeyById -->
+   
+    <wsdl:operation name="GetModeById">
+      <wsdl:input message="tns:GetModeByIdMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetModeByIdMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--28 get GetModeByMode -->
+    <wsdl:operation name="GetModeByMode">
+      <wsdl:input message="tns:GetModeByModeMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetModeByModeMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--29 GetCoursesModeByPrice -->
+    
+    <wsdl:operation name="GetModeByPrice">
+      <wsdl:input message="tns:GetModeByPriceMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetModeByPriceMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!-- 30 GetCoursesModalityByStatus -->
+    <!-- 
+    <wsdl:operation name="GetCoursesModalityByStatus">
+      <wsdl:input message="tns:GetCoursesModalityByStatusMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesModalityByStatusMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>-->
+
+
+    <!-- 31 GetTopicsByCourse -->
+   
+    <wsdl:operation name="GetTopicsByCourse">
+      <wsdl:input message="tns:GetTopicsByCourseMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetTopicsByCourseMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--32 GetCoursesByDynamicParams -->
+    <wsdl:operation name="GetCoursesByDynamicParams">
+      <wsdl:input message="tns:GetCoursesByDynamicParamsMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesByDynamicParamsMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+    <!--33 UpdateStatusCourse -->
+ <!--   <wsdl:operation name="UpdateStatusCourse">
+      <wsdl:input message="tns:UpdateStatusCourseMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:UpdateStatusCourseResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>-->
+    <!--34 UpdateStatusTopic  -->
+  
+    <!-- <wsdl:operation name="UpdateStatusTopic">
+      <wsdl:input message="tns:UpdateStatusTopicMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:UpdateStatusTopicMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+-->
+    <!--35 get course By Affiliate -->
+    <wsdl:operation name="GetCoursesByAffiliate">
+      <wsdl:input message="tns:GetCoursesByAffiliateMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesByAffiliateMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--36 get course By Classroom -->
+    <wsdl:operation name="GetCoursesByClassroom">
+      <wsdl:input message="tns:GetCoursesByClassroomMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesByClassroomMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--37 get course By Material -->
+    <wsdl:operation name="GetCoursesByMaterial">
+      <wsdl:input message="tns:GetCoursesByMaterialMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesByMaterialMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--38 get course By Delivery -->
+    <wsdl:operation name="GetCoursesByDelivery">
+      <wsdl:input message="tns:GetCoursesByDeliveryMsgRequest">
+      </wsdl:input>
+      <wsdl:output message="tns:GetCoursesByDeliveryMsgResponse">
+      </wsdl:output>
+      <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+      </wsdl:fault>
+    </wsdl:operation>
+  
+  </wsdl:portType>
+	<wsdl:binding name="CourseBinding" type="tns:CourseESInterface">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <!-- 1 Create course -->
+    <wsdl:operation name="CreateCourse">
+			<soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/CreateCourse"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="businessException">
+				<soap:fault name="businessException" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+    <!--2 Create topic-->
+    <wsdl:operation name="CreateTopic">
+			<soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/CreateTopic"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="businessException">
+				<soap:fault name="businessException" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+    <!--3 Create modality-->
+
+	<wsdl:operation name="CreateMode">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/CreateMode"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <!--4 update course-->
+    <wsdl:operation name="UpdateCourse">
+			<soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/UpdateCourse"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="businessException">
+				<soap:fault name="businessException" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+    <!--5 update topic-->
+    <wsdl:operation name="UpdateTopic">
+			<soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/UpdateTopic"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="businessException">
+				<soap:fault name="businessException" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+    <!--6 update modality-->
+	 <wsdl:operation name="UpdateMode">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/UpdateMode"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <!--7 delete topic-->
+    <wsdl:operation name="DeleteTopic">
+			<soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/DeleteTopic"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="businessException">
+				<soap:fault name="businessException" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+    <!--8 delete course-->
+    <wsdl:operation name="DeleteCourse">
+			<soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/DeleteCourse"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="businessException">
+				<soap:fault name="businessException" use="literal"/>
+			</wsdl:fault>
+		</wsdl:operation>
+    <!--9 Delete mode-->
+	   <wsdl:operation name="DeleteMode">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/DeleteModey"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--10 Get course by id-->
+    <wsdl:operation name="GetCourseById">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCourseById"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!-- 11 get Topic By Id -->
+    <wsdl:operation name="GetTopicById">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetTopicById"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+	  <wsdl:operation name="GetCoursesByUser">
+	    <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesByUser"/>
+	    <wsdl:input>
+	      <soap:body use="literal"/>
+	    </wsdl:input>
+	    <wsdl:output>
+	      <soap:body use="literal"/>
+	    </wsdl:output>
+	    <wsdl:fault name="businessException">
+	      <soap:fault name="businessException" use="literal"/>
+	    </wsdl:fault>
+	  </wsdl:operation>
+    <!--12 get course By name -->
+    <wsdl:operation name="GetCoursesByName">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesByName"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+
+
+
+    <!--13Get course By Description -->
+    <wsdl:operation name="GetCoursesByDescription">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesByDescription"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--14 Get course By Author -->
+    <wsdl:operation name="GetCoursesByAuthor">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesByAuthor"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--15 get course By Level -->
+    <wsdl:operation name="GetCoursesByLevel">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesByLevel"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--16 getcourse By Score -->
+    <wsdl:operation name="GetCoursesByScore">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesByScore"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+
+    <!--17 get course By Target -->
+    <wsdl:operation name="GetCoursesByTarget">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesByTarget"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--18 get course By Status -->
+    <wsdl:operation name="GetCoursesByStatus">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesByStatus"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--19 get course By Hours -->
+    <wsdl:operation name="GetCoursesByHours">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesByHours"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--20 Get course By Category -->
+    <wsdl:operation name="GetCoursesByCategory">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesByCategory"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--21 get course By ReleaseDate -->
+    <wsdl:operation name="GetCoursesByReleaseDate">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesByReleaseDate"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--22 get course By Mode -->
+	  <wsdl:operation name="GetCoursesByMode">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesByMode"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation> 
+
+    <!--23 get course By Price -->
+
+    <wsdl:operation name="GetCoursesByPrice">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesByPrice"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--24 get Topic By Name -->
+
+    <wsdl:operation name="GetTopicsByName">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetTopicsByName"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+	  
+	  
+	  <!--24 g../../../../../../../../../Users/LUIS%7E1.MON/AppData/Local/Temp/i269q1lh.bmpet Topic By User -->
+	  
+	  <wsdl:operation name="GetTopicsByUser">
+	    <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetTopicsByUser"/>
+	    <wsdl:input>
+	      <soap:body use="literal"/>
+	    </wsdl:input>
+	    <wsdl:output>
+	      <soap:body use="literal"/>
+	    </wsdl:output>
+	    <wsdl:fault name="businessException">
+	      <soap:fault name="businessException" use="literal"/>
+	    </wsdl:fault>
+	  </wsdl:operation>
+	  
+
+    <!--25 get Topic By Description -->
+
+	  <wsdl:operation name="GetTopicsByDescription">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetTopicsByDescription"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--26 get Topic By status -->
+
+    <wsdl:operation name="GetTopicsByStatus">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetTopicsByStatus"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--27 GetModeById -->
+	  <wsdl:operation name="GetModeById">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetModeById"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--28 GetCoursesModalityByMode -->
+	  <wsdl:operation name="GetModeByMode">
+	    <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetModeByMode"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <!-- 29 GetModeByPrice -->
+	  
+	  <wsdl:operation name="GetModeByPrice">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetsModeByPrice"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <!--30 GetCoursesModalityByStatus -->
+
+	  <!--<wsdl:operation name="GetCoursesModalityByStatus">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesModalityByStatus"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>-->
+
+    <!--31 GetTopicsByCourse -->
+    <wsdl:operation name="GetTopicsByCourse">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetTopicsByCourse"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+    <!--32 GetCoursesByDynamicParams -->
+    <wsdl:operation name="GetCoursesByDynamicParams">
+      <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesByDynamicParams"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="businessException">
+        <soap:fault name="businessException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+
+ 
+
+      <!--35 GetCoursesByAffiliate -->
+      <wsdl:operation name="GetCoursesByAffiliate">
+                <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesByAffiliate"/>
+                <wsdl:input>
+                  <soap:body use="literal"/>
+                </wsdl:input>
+                <wsdl:output>
+                  <soap:body use="literal"/>
+                </wsdl:output>
+                <wsdl:fault name="businessException">
+                  <soap:fault name="businessException" use="literal"/>
+                </wsdl:fault>
+              </wsdl:operation>
+
+        <!--36 GetCoursesByClassroom -->
+              <wsdl:operation name="GetCoursesByClassroom">
+                <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesByClassroom"/>
+                <wsdl:input>
+                  <soap:body use="literal"/>
+                </wsdl:input>
+                <wsdl:output>
+                  <soap:body use="literal"/>
+                </wsdl:output>
+                <wsdl:fault name="businessException">
+                  <soap:fault name="businessException" use="literal"/>
+                </wsdl:fault>
+              </wsdl:operation>
+
+              <!--37 GetCoursesByDelivery -->
+      <wsdl:operation name="GetCoursesByDelivery">
+                <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesByDelivery"/>
+                <wsdl:input>
+                  <soap:body use="literal"/>
+                </wsdl:input>
+                <wsdl:output>
+                  <soap:body use="literal"/>
+                </wsdl:output>
+                <wsdl:fault name="businessException">
+                  <soap:fault name="businessException" use="literal"/>
+                </wsdl:fault>
+              </wsdl:operation>
+
+              <!--38GetCoursesByMaterial -->
+     <wsdl:operation name="GetCoursesByMaterial">
+                <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetCoursesByMaterial"/>
+                <wsdl:input>
+                  <soap:body use="literal"/>
+                </wsdl:input>
+                <wsdl:output>
+                  <soap:body use="literal"/>
+                </wsdl:output>
+                <wsdl:fault name="businessException">
+                  <soap:fault name="businessException" use="literal"/>
+                </wsdl:fault>
+              </wsdl:operation>
+              
+            </wsdl:binding>
+	<wsdl:service name="CourseES">
+		<wsdl:port name="CoursePort" binding="tns:CourseBinding">
+			<soap:address location="http://localhost:8080/CourseES/"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

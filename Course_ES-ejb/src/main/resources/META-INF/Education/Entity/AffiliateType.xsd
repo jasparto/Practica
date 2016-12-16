@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- editado con XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) por Jorge Heredia (Itehl Consulting) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:tns="http://itehl.com/education/schema/affiliatetype/v1/"
+  targetNamespace="http://itehl.com/education/schema/affiliatetype/v1/"
+  xmlns:User="http://itehl.com/fwk/schema/usertype/v1/"
+  xmlns:com="http://itehl.com/fwk/schema/commontype/v1/"
+  xmlns:daf="http://itehl.com/fwk/schema/dynamicattributetype/v1/"
+  xmlns:ent="http://itehl.com/fwk/schema/entitytype/v1/" elementFormDefault="qualified"
+  attributeFormDefault="unqualified">
+
+  <!--  -->
+  <annotation>
+    <documentation>
+			Este tipo de dato representa la información de los Afiliados a la plataforma de IT Education.
+		</documentation>
+  </annotation>
+  <import namespace="http://itehl.com/fwk/schema/commontype/v1/"
+    schemaLocation="../../Framework/Utility/CommonType.xsd"/>
+  <import namespace="http://itehl.com/fwk/schema/dynamicattributetype/v1/"
+    schemaLocation="../../Framework/Entity/DynamicAttributeType.xsd"/>
+  <import namespace="http://itehl.com/fwk/schema/entitytype/v1/"
+    schemaLocation="../../Framework/Entity/EntityType.xsd"/>
+
+  <complexType name="AffiliateType">
+    <complexContent>
+      <extension base="ent:EntityType">
+        <sequence>
+          <element name="Guid" type="string"/>
+          <element name="UserGuid" type="string"/>
+          <element name="SalesName" type="string"/>
+          <element name="SalesEmail" type="string"/>
+          <element name="CooName" type="string"/>
+          <element name="CooEmail" type="string"/>
+          <element name="CeoName" type="string"/>
+          <element name="CeoEmail" type="string"/>
+          <element name="CfoName" type="string"/>
+          <element name="CfoEmail" type="string"/>
+          <element name="WebPage" type="string"/>
+          <element name="BusinessBrand" type="string"/>
+          <element name="BusinessDescription" type="string"/>
+          <element name="ContracInitialDate" type="dateTime" nillable="true"/>
+          <element name="ContracEndDate" type="dateTime" nillable="true"/>
+          <element name="DynamicParams" type="daf:DynamicAttributeType" maxOccurs="unbounded"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <!-- msg -->
+  <element name="AffiliateTypeMsg">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="DeleteAffiliateRequestType">
+    <complexType>
+      <sequence>
+        <element name="Guid" type="string"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="DeleteAffiliateResponseType">
+    <complexType>
+      <sequence>
+        <element name="Status" type="boolean"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!-- GetAffiliateByUser -->
+  <element name="GetAffiliateByUserRequestType">
+    <complexType>
+      <sequence>       
+        <element name="UserGuid" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetAffiliateByUserResponseType">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!-- GetAffiliateById -->
+  <element name="GetAffiliateByIdRequestType">
+    <complexType>
+      <sequence>
+        <element name="Guid" type="string"/>
+        <element name="UserGuid" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  
+  <element name="GetAffiliateByIdResponseType">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+  
+
+  <!-- GetAffiliateBySalesName -->
+  <element name="GetAffiliateBySalesNameRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="SalesName" type="string"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetAffiliateBySalesNameResponseType">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!-- GetAffiliateBySalesEmail -->
+  <element name="GetAffiliateBySalesEmailRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="SalesName" type="string"/>
+
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GetAffiliateBySalesEmailResponseType">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!-- GetAffiliateByCooName -->
+  <element name="GetAffiliateByCooNameRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="CooName" type="string"/>
+
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GetAffiliateByCooNameResponseType">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!-- GetAffiliateByCooEmail -->
+  <element name="GetAffiliateByCooEmailRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="CooEmail" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetAffiliateByCooEmailResponseType">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!-- GetAffiliateByCeoName -->
+  <element name="GetAffiliateByCeoNameRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="CeoName" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetAffiliateByCeoNameResponseType">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!-- GetAffiliateByCeoEmail -->
+  <element name="GetAffiliateByCeoEmailRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="CeoEmail" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetAffiliateByCeoEmailResponseType">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!-- GetAffiliateByCfoName -->
+  <element name="GetAffiliateByCfoNameRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="CfoName" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetAffiliateByCfoNameResponseType">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!-- GetAffiliateByCfoEmail-->
+  <element name="GetAffiliateByCfoEmailRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="CfoEmail" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetAffiliateByCfoEmailResponseType">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!-- GetAffiliateByWebPage-->
+  <element name="GetAffiliateByWebPageRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="WebPage" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetAffiliateByWebPageResponseType">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!-- GetAffiliateByBusinessBrand-->
+  <element name="GetAffiliateByBusinessBrandRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="BusinessBrand" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetAffiliateByBusinessBrandResponseType">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!-- GetAffiliateByBusinessDescription-->
+  <element name="GetAffiliateByBusinessDescriptionRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="BusinessDescription" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetAffiliateByBusinessDescriptionResponseType">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!-- GetAffiliateByContracInitialDate-->
+  <element name="GetAffiliateByContracInitialDateRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="ContracInitialDate" type="dateTime" nillable="true"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetAffiliateByContracInitialDateResponseType">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+
+  <!-- GetAffiliateByContracEndDate-->
+  <element name="GetAffiliateByContracEndDateRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="ContracEndDate" type="dateTime" nillable="true"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetAffiliateByContracEndDateResponseType">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!-- GetAffiliateByStatus-->
+  <element name="GetAffiliateByStatusRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Status" type="boolean"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetAffiliateByStatusResponseType">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!-- GetAffiliateByDynamicParams-->
+  <element name="GetAffiliateByDynamicParamsRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="DynamicParams" type="daf:DynamicAttributeType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetAffiliateByDynamicParamsResponseType">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!-- GetAffiliateByCourse-->
+  <element name="GetAffiliateByCourseRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Course" type="int"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetAffiliateByCourseResponseType">
+    <complexType>
+      <sequence>
+        <element name="Affiliate" type="tns:AffiliateType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+</schema>

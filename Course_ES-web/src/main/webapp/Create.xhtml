@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>  
+        <title>Courses</title>
+        <style type="text/css">
+            .ui-widget,.ui-widget .ui-widget {
+                font-size: 90% !important;
+            }
+        </style>
+    </h:head>  
+
+    <h:body>  
+        <h:form id="createForm">
+            <p:growl id="msgs" showDetail="true" />
+            <p:panel id="courseCreate" header="Create Course" style="margin-bottom:10px; width: 50%; position: absolute; top: 8%; left: 25% ">
+                <p:messages />
+                <h:panelGrid columns="4" cellpadding="8" rendered="#{not empty courseBean.create}" >
+                    <p:outputLabel for="userGuidC" value="UserGuid :" />
+                    <p:inputText id="userGuidC" value="#{courseBean.create.userGuid}" required="true" maxlength="10"/>
+
+                    <p:outputLabel for="nameC" value="Name :" />
+                    <p:inputText id="nameC" value="#{courseBean.create.name}" required="true" maxlength="50" />
+
+                    <p:outputLabel for="authorC" value="Author :" />
+                    <p:inputText id="authorC" value="#{courseBean.create.author}" required="true" maxlength="50" />
+
+                    <p:outputLabel for="categoryC" value="Category :" />
+                    <p:inputText id="categoryC" value="#{courseBean.create.category}" required="true" maxlength="50" />
+
+                    <p:outputLabel for="levelC" value="Level:" />
+                    <p:inputText id="levelC" value="#{courseBean.create.level}" required="true" maxlength="5" />
+
+                    <p:outputLabel for="scoreC" value="Score:" />
+                    <p:inputText id="scoreC" value="#{courseBean.create.score}" required="true"  maxlength="5"/>                   
+
+                    <p:outputLabel for="statusC" value="Status:" />
+                    <p:selectBooleanCheckbox id="statusC" value="#{courseBean.create.status}" required="true"/>
+
+                    <p:outputLabel for="hoursC" value="Hours:" />
+                    <p:inputText id="hoursC" value="#{courseBean.create.hours}" required="true"  maxlength="4"/>
+
+                    <p:outputLabel for="releaseDateC" value="Release Date :" />
+                    <p:calendar id="releaseDateC" value="#{courseBean.create.releaseDate}" effect="fold" required="true" />
+
+                    <p:outputLabel for="imageC" value="Image:" />
+                    <p:inputText id="imageC" value="#{courseBean.create.image}" required="true" maxlength="50"/>
+
+                    <p:outputLabel for="modeC" value="Mode:" />
+                    <p:inputText id="modeC" value="#{courseBean.create.mode}" required="true" maxlength="50" />
+
+                    <p:outputLabel for="priceC" value="Price:" />
+                    <p:inputText id="priceC" value="#{courseBean.create.price}" required="true" maxlength="15"/>
+
+                    <p:outputLabel for="createDateC" value="Create Date :" />
+                    <p:calendar id="createDateC" value="#{courseBean.create.createDate}" effect="fold" required="true" />
+
+                    <p:outputLabel for="createByC" value="Create By:" />
+                    <p:inputText id="createByC" value="#{courseBean.create.createdBy}" required="true" />
+
+                    <p:outputLabel for="updateDateC" value="Update Date :" />
+                    <p:calendar id="updateDateC" value="#{courseBean.create.updatedDate}" effect="fold" required="true" maxlength="50"/>
+
+                    <p:outputLabel for="targetC" value="Target:" />
+                    <p:inputTextarea  id="targetC" value="#{courseBean.create.target}" rows="4" cols="30" 
+                                      required="true" maxlength="500" counter="display" counterTemplate="{0} characters remaining." autoResize="false"/>
+
+                    <p:outputLabel for="updateByC" value="Update By:" />
+                    <p:inputText id="updateByC" value="#{courseBean.create.updatedBy}" required="true" maxlength="50"/>
+                    <br/>
+                    <h:outputText id="display" />
+
+                </h:panelGrid>
+                <p:separator />
+
+                <p:commandButton value="Submit" update=":createForm:msgs" icon="ui-icon-check" actionListener="#{courseBean.createCourse}"/>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>

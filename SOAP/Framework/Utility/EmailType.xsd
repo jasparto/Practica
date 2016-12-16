@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://itehl.com/fwk/schema/emailtype/v1/"
+        targetNamespace="http://itehl.com/fwk/schema/emailtype/v1/" 
+        elementFormDefault="qualified" 
+        attributeFormDefault="unqualified">
+	<annotation>
+		<documentation>
+			Este tipo de dato representa la información del correo electrónico.
+		</documentation>
+	</annotation>
+	<simpleType name="emailType">
+		<restriction base="string">
+			<pattern value="([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])"/>
+		</restriction>
+	</simpleType>
+</schema>

@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- editado con XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) por Jorge Heredia (Itehl Consulting) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:tns="http://itehl.com/education/schema/coursetype/v1/"
+  xmlns:top="http://itehl.com/education/schema/topicstype/v1/"
+  xmlns:daf="http://itehl.com/fwk/schema/dynamicattributetype/v1/"
+  xmlns:cat="http://itehl.com/fwk/schema/catalogtype/v1/"
+  xmlns:com="http://itehl.com/fwk/schema/commontype/v1/"
+  xmlns:ent="http://itehl.com/fwk/schema/entitytype/v1/"
+  xmlns:mod="http://itehl.com/education/schema/modalitytype/v1/"
+  xmlns:afi="http://itehl.com/education/schema/affiliatetype/v1/"
+  
+  targetNamespace="http://itehl.com/education/schema/coursetype/v1/" elementFormDefault="qualified"
+  attributeFormDefault="unqualified">
+
+  <annotation>
+    <documentation>
+			Este tipo de dato representa la información de los cursos ofertados en la plataforma.
+		</documentation>
+  </annotation>
+  <import namespace="http://itehl.com/fwk/schema/catalogtype/v1/"
+    schemaLocation="../../Framework/Entity/CatalogType.xsd"/>
+  <import namespace="http://itehl.com/education/schema/topicstype/v1/"
+    schemaLocation="TopicsType.xsd"/>
+  <import namespace="http://itehl.com/fwk/schema/commontype/v1/"
+    schemaLocation="../../Framework/Utility/CommonType.xsd"/>
+  <import namespace="http://itehl.com/fwk/schema/dynamicattributetype/v1/"
+    schemaLocation="../../Framework/Entity/DynamicAttributeType.xsd"/>
+  <import namespace="http://itehl.com/fwk/schema/entitytype/v1/"
+    schemaLocation="../../Framework/Entity/EntityType.xsd"/>
+  <import namespace="http://itehl.com/education/schema/modalitytype/v1/"
+    schemaLocation="modeType.xsd"/>
+  <import namespace="http://itehl.com/education/schema/affiliatetype/v1/"
+    schemaLocation="AffiliateType.xsd"/>
+
+  <complexType name="CourseType">
+    <complexContent>
+      <extension base="ent:EntityType">
+        <sequence>
+          <element name="Name" type="string"/>
+          <element name="Description" type="string"/>
+          <element name="Author" type="string"/>
+          <element name="Score" type="int"/>
+          <element name="Target" type="string"/>
+          <element name="Hours" type="int"/>
+          <element name="Category" type="string"/>
+          <element name="ReleaseDate" type="dateTime" nillable="true"/>
+          <element name="Level" type="int"/>
+          <element name="Topics" type="top:TopicsType" maxOccurs="unbounded"/>
+          <element name="Mode" type="string"/>
+          <element name="Price" type="double"/>
+          <element name="Image" type="string"/>
+          <element name="Affiliates" type = "afi:AffiliateType" maxOccurs="unbounded"/>
+          <element name="DynamicParams" type="daf:DynamicAttributeType" maxOccurs="unbounded"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <!--Msg -->
+  <element name="CourseTypeMsg">
+    <complexType>
+      <sequence>
+        <element name="course" type="tns:CourseType"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="TopicsTypeMsg">
+    <complexType>
+      <sequence>
+        <element name="Topics" type="top:TopicsType"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="modeTypeMsg">
+    <complexType>
+      <sequence>
+        <element name="mode" type="mod:modetype"/>
+      </sequence>
+    </complexType>
+  </element>
+  <!--Delete -->
+  <element name="DeleteCourseRequestType">
+    <complexType>
+      <sequence>
+        <element name="Guid" type="string"/>
+        <element name="UserGuid" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="DeleteCourseResponseType">
+    <complexType>
+      <sequence>
+        <element name="Status" type="boolean"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="DeleteTopicsRequestType">
+    <complexType>
+      <sequence>
+        <element name="Guid" type="string"/>
+        <element name="UserGuid" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="DeleteTopicsResponseType">
+    <complexType>
+      <sequence>
+        <element name="Status" type="boolean"/>
+      </sequence>
+    </complexType>
+  </element>
+
+
+  <element name="DeleteModeRequestType">
+    <complexType>
+      <sequence>
+        <element name="Guid" type="string"/>
+        <element name="UserGuid" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="DeleteModeResponseType">
+    <complexType>
+      <sequence>
+        <element name="Status" type="boolean"/>
+      </sequence>
+    </complexType>
+  </element>
+
+
+  <!--Getcourse By Id -->
+  <element name="GetCourseByIdRequestType">
+    <complexType>
+      <sequence>
+        <element name="Guid" type="string"/>
+        <element name="UserGuid" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCourseByIdResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" />
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--get Topic By Id -->
+  <element name="GetTopicByIdRequestType">
+    <complexType>
+      <sequence>
+        <element name="Guid" type="string"/>
+        <element name="UserGuid" type="string"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetTopicByIdResponseType">
+    <complexType>
+      <sequence>
+        <element name="Topics" type="top:TopicsType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--get courses By User -->
+  
+  <element name="GetCoursesByUserRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        
+      </sequence>
+    </complexType>
+  </element>
+  
+  <element name="GetCoursesByUserResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" maxOccurs="unbounded"/>
+        
+      </sequence>
+    </complexType>
+  </element>
+  
+  
+
+  <!--get courses By name -->
+
+  <element name="GetCoursesByNameRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Name" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCoursesByNameResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  
+
+
+
+  <!--Get courses By Description -->
+
+  <element name="GetCoursesByDescriptionRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Description" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCoursesByDescriptionResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+  <!--get course By Autor -->
+
+  <element name="GetCoursesByAuthorRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Author" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCoursesByAuthorResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--get course By Level -->
+
+  <element name="GetCoursesByLevelRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Level" type="int"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCoursesByLevelResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+
+  <!--getcourse By Score -->
+
+  <element name="GetCoursesByScoreRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Score" type="int"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCoursesByScoreResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+
+  <!--get course By Target -->
+
+  <element name="GetCoursesByTargetRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Target" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCoursesByTargetResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--get course By Status -->
+
+  <element name="GetCoursesByStatusRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Status" type="boolean"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCoursesByStatusResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--get course By Hours -->
+
+  <element name="GetCoursesByHoursRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Hours" type="int"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCoursesByHoursResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--Get course By Category -->
+
+  <element name="GetCoursesByCategoryRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Category" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCoursesByCategoryResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--get course By ReleaseDate -->
+
+  <element name="GetCoursesByReleaseDateRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="ReleaseDate" type="dateTime" nillable="true"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCoursesByReleaseDateResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--get course By Mode -->
+
+  <element name="GetCoursesByModeRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Mode" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCoursesByModeResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+
+  <!--get course By Price -->
+
+  <element name="GetCoursesByPriceRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="price" type="double"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCoursesByPriceResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+
+  <!--get Topic By Name -->
+  <element name="GetTopicsByNameRequestType">
+    <complexType>
+      <sequence>
+
+        <element name="UserGuid" type="string"/>
+        <element name="Name" type="string"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetTopicsByNameResponseType">
+    <complexType>
+      <sequence>
+        <element name="Topics" type="top:TopicsType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--get Topic By Description -->
+  <element name="GetTopicsByDescriptionRequestType">
+    <complexType>
+      <sequence>
+
+        <element name="UserGuid" type="string"/>
+        <element name="Description" type="string"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetTopicsByDescriptionResponseType">
+    <complexType>
+      <sequence>
+        <element name="Topics" type="top:TopicsType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--get Topic By status -->
+  <element name="GetTopicsByStatusRequestType">
+    <complexType>
+      <sequence>
+
+        <element name="UserGuid" type="string"/>
+        <element name="Status" type="boolean"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetTopicsByStatusResponseType">
+    <complexType>
+      <sequence>
+        <element name="Topics" type="top:TopicsType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+
+
+  <!--get CoursesModalityById -->
+  <element name="GetModeByIdRequestType">
+    <complexType>
+      <sequence>
+
+        <element name="UserGuid" type="string"/>
+        <element name="Guid" type="string"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetModeByIdResponseType">
+    <complexType>
+      <sequence>
+        <element name="Guid" type="mod:modetype" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--get GetCoursesModalityByMode -->
+  <element name="GetModeByModeRequestType">
+    <complexType>
+      <sequence>
+
+        <element name="UserGuid" type="string"/>
+        <element name="Mode" type="string"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetModeByModeResponseType">
+    <complexType>
+      <sequence>
+        <element name="Guid" type="mod:modetype" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+
+  <!--get GetCoursesModalityByPrise -->
+  <element name="GetModeByPriceRequestType">
+    <complexType>
+      <sequence>
+
+        <element name="UserGuid" type="string"/>
+        <element name="Price" type="double"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetModeByPriceResponseType">
+    <complexType>
+      <sequence>
+        <element name="Guid" type="mod:modetype" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+
+
+
+  <!--get CourseModality By Id -->
+
+  <element name="GetCourseModeByIdRequestType">
+    <complexType>
+      <sequence>
+        <element name="GuidUser" type="string"/>
+        <element name="UserGuid" type="string"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCourseModeByIdResponseType">
+    <complexType>
+      <sequence>
+        <element name="mode" type="mod:modetype" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--get CourseModality By mode-->
+
+  <element name="GetCourseModeByModeRequestType">
+    <complexType>
+      <sequence>
+        <element name="GuidUser" type="string"/>
+        <element name="mode" type="string"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCourseModalityByModeResponseType">
+    <complexType>
+      <sequence>
+        <element name="mode" type="mod:modetype" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+
+  <!--get CourseModality By prise-->
+  <element name="GetCourseModeByPriseRequestType">
+    <complexType>
+      <sequence>
+        <element name="GuidUser" type="string"/>
+        <element name="price" type="double"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCourseModeByPriseResponseType">
+    <complexType>
+      <sequence>
+        <element name="mode" type="mod:modetype" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+
+
+  <!--get  GetTopicByCourse-->
+
+  <element name="GetTopicsByCourseRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Course" type="int"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetTopicsByCourseResponseType">
+    <complexType>
+      <sequence>
+        <element name="topics" type="top:TopicsType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+
+
+
+
+  <!--get  GetTopicByUser-->
+  
+  <element name="GetTopicsByUserRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  
+  <element name="GetTopicsByUserResponseType">
+    <complexType>
+      <sequence>
+        <element name="topics" type="top:TopicsType" maxOccurs="unbounded"/>
+        
+      </sequence>
+    </complexType>
+  </element>
+  
+
+
+
+
+  <!-- GetCoursesByDynamicParams-->
+
+  <element name="GetCoursesByDynamicParamsRequestType">
+    <complexType>
+      <sequence>
+
+        <element name="UserGuid" type="string"/>
+        <element name="DynamicParams" type="daf:DynamicAttributeType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCoursesByDynamicParamsResponseType">
+    <complexType>
+      <sequence>
+        <element name="Guid" type="tns:CourseType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--get  GetTopicByCourse-->
+
+  <element name="GetCoursesByTopicRequestType">
+    <complexType>
+      <sequence>
+        <element name="GuidUser" type="string"/>
+        <element name="Topic" type="integer"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCoursesByTopicResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--get  GetCoursesByAffiliate-->
+
+  <element name="GetCoursesByAffiliateRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Affiliate" type="int"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCourseByAffiliateResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+  <!--get  GetCoursesByClassroom-->
+
+  <element name="GetCoursesByClassroomRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Classroom" type="int"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCoursesByClassroomResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--get  GetCoursesByMaterial-->
+
+  <element name="GetCoursesByMaterialRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Material" type="int"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCoursesByMaterialResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--get  GetCoursesByDelivery-->
+
+  <element name="GetCoursesByDeliveryRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Delivery" type="int"/>
+
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="GetCoursesByDeliveryResponseType">
+    <complexType>
+      <sequence>
+        <element name="Course" type="tns:CourseType" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+</schema>

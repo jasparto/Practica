@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- editado con XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) por Jorge Heredia (Itehl Consulting) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://itehl.com/fwk/schema/entitytype/v1/"
+	targetNamespace="http://itehl.com/fwk/schema/entitytype/v1/" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<complexType name="EntityType">
+		<sequence>
+			<element name="Guid" type="string"/>
+			<element name="UserGuid" type="string"/>
+			<element name="Status" type="boolean"/>
+			<element name="CreateDate" type="dateTime" nillable="true"/>
+			<element name="CreatedBy" type="string"/>
+			<element name="UpdatedDate" type="dateTime"  nillable="true"/>
+			<element name="UpdatedBy" type="string"/>
+		</sequence>
+	</complexType>
+</schema>

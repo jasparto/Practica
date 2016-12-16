@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>  
+        <title>Courses</title>
+        <style type="text/css">
+            .ui-widget,.ui-widget .ui-widget {
+                font-size: 90% !important;
+            }
+        </style>
+    </h:head>  
+
+    <h:body>  
+        <h:form id="coursesForm">
+            <p:growl id="msgs" showDetail="true" />
+            <p:contextMenu for="courses">                
+                <p:menuitem value="View" update="courseDetail" icon="ui-icon-search" oncomplete="PF('courseViewDialog').show()"/>
+                <p:menuitem value="Edit" update="courseEdit" icon="ui-icon-pencil" actionListener="#{courseBean.readCourseById()}" oncomplete="PF('courseEditDialog').show()"/>
+                <p:menuitem>
+                    <p:commandLink styleClass="ui-menuitem-link" action="#{courseBean.deleteCourse}" ajax="false">
+                        <h:outputText styleClass="ui-menuitem-icon ui-icon ui-icon-trash" />
+                        <h:outputText styleClass="ui-menuitem-text" value="Delete" />
+                        <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />
+                    </p:commandLink>
+                </p:menuitem>
+            </p:contextMenu>
+            <p:dataTable id="courses" var="course" value="#{courseBean.courses}" widgetVar="personsTable"
+                         rowKey="#{course.guid}" selection="#{courseBean.selectedCourse}" selectionMode="single"
+                         paginator="true" rows="10" rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
+                         paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                         >
+                <f:facet name="header">
+                    <p:toolbar>
+                        <f:facet name="left">
+                            <p:commandButton value="Create" action="Create" ajax="false" icon="ui-icon-plus" />
+                        </f:facet>
+                        <f:facet name="right">                            
+                            <p:inputText id="globalFilter" onkeyup="PF('coursesTable').filter()" style="width:200px" placeholder="Enter keyword"/>
+                            <span class="ui-separator"><span class="ui-icon ui-icon-grip-dotted-vertical" /></span>
+                            <p:commandButton id="toggler" type="button" icon="ui-icon-calculator"/>
+                        </f:facet>
+                    </p:toolbar>
+                    <p:columnToggler datasource="courses" trigger="toggler" />
+                </f:facet>
+                <p:column headerText="Name">
+                    <h:outputText value="#{course.name}" />
+                </p:column>
+
+                <p:column headerText="Author">
+                    <h:outputText value="#{course.author}" />
+                </p:column>
+
+                <p:column headerText="Category">
+                    <h:outputText value="#{course.category}" />
+                </p:column>
+
+                <p:column headerText="Mode">
+                    <h:outputText value="#{course.mode}" />
+                </p:column>
+
+                <p:column headerText="Level">
+                    <h:outputText value="#{course.level}" />
+                </p:column>
+
+                <p:column headerText="Price">
+                    <h:outputText value="#{course.price}" >
+                        <f:convertNumber currencySymbol="$" type="currency"/>
+                    </h:outputText>
+                </p:column>
+            </p:dataTable>         
+
+            <p:dialog header="Course Info" widgetVar="courseViewDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="courseDetail" style="text-align:center;">
+                    <p:panelGrid  columns="2" rendered="#{not empty courseBean.selectedCourse}" columnClasses="label,value">
+                        <h:outputText value="UserGuid:" />
+                        <h:outputText value="#{courseBean.selectedCourse.userGuid}" />
+
+                        <h:outputText value="Name:" />
+                        <h:outputText value="#{courseBean.selectedCourse.name}" />
+
+                        <h:outputText value="Author:" />
+                        <h:outputText value="#{courseBean.selectedCourse.author}" />
+
+                        <h:outputText value="Category:" />
+                        <h:outputText value="#{courseBean.selectedCourse.category}"/>
+
+                        <h:outputText value="Level:" />
+                        <h:outputText value="#{courseBean.selectedCourse.level}"/>
+
+                        <h:outputText value="Score:" />
+                        <h:outputText value="#{courseBean.selectedCourse.score}" />
+
+                        <h:outputText value="Target:" />
+                        <h:outputText value="#{courseBean.selectedCourse.target}" />
+
+                        <h:outputText value="Status:" />
+                        <h:outputText value="#{courseBean.selectedCourse.status}" />
+
+                        <h:outputText value="Hours:" />
+                        <h:outputText value="#{courseBean.selectedCourse.hours}" />
+
+                        <h:outputText value="Release Date:" />
+                        <h:outputText value="#{courseBean.selectedCourse.hours}" >
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="Image:" />
+                        <h:outputText value="#{courseBean.selectedCourse.image}" />
+
+                        <h:outputText value="Mode" />
+                        <h:outputText value="#{courseBean.selectedCourse.mode}" />
+
+                        <h:outputText value="Price:" />
+                        <h:outputText value="#{courseBean.selectedCourse.price}" />
+
+                        <h:outputText value="Create Date:" />
+                        <h:outputText value="#{courseBean.selectedCourse.createDate}" >
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="Create By:" />
+                        <h:outputText value="#{courseBean.selectedCourse.createdBy}" />
+
+                        <h:outputText value="Update Date:" />
+                        <h:outputText value="#{courseBean.selectedCourse.updatedDate}" >
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="Update By:" />
+                        <h:outputText value="#{courseBean.selectedCourse.updatedBy}" />
+
+
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+
+            <p:dialog  header="Edit Course" widgetVar="courseEditDialog" modal="true" showEffect="fade" hideEffect="fade"  height="700" resizable="false" draggable="false">
+                <p:panel id="courseEdit" header="Insert data" style="margin-bottom:10px;">
+                    <p:messages />
+                    <h:panelGrid columns="2" cellpadding="4" rendered="#{not empty courseBean.course}">                        
+                        <p:outputLabel for="userGuid" value="UserGuid : " />
+                        <p:inputText id="userGuid" disabled="true" value="#{courseBean.course.userGuid}" required="true" label="UserGuid" maxlength="10"/>
+
+                        <p:outputLabel for="name" value="Name : " />
+                        <p:inputText id="name" value="#{courseBean.course.name}" required="true" label="Name" maxlength="50"/>
+
+                        <p:outputLabel for="author" value="Author : " />
+                        <p:inputText id="author" value="#{courseBean.course.author}" required="true" label="Author" maxlength="50"/>
+
+                        <p:outputLabel for="category" value="Category : " />
+                        <p:inputText id="category" value="#{courseBean.course.category}" required="true" label="Category" maxlength="50" />
+
+                        <p:outputLabel for="level" value="Level:" />
+                        <p:inputText id="level" value="#{courseBean.course.level}" required="true" label="Level" maxlength="5" />
+
+                        <p:outputLabel for="score" value="Score:" />
+                        <p:inputText id="score" value="#{courseBean.course.score}" required="true" label="Score" maxlength="5" />
+
+                        <p:outputLabel for="target" value="Target:" />
+                        <p:inputTextarea id="target" value="#{courseBean.course.target}" rows="4" cols="30" 
+                                         required="true" maxlength="500" counter="display" counterTemplate="{0} characters remaining." autoResize="false" />
+                        <h:outputText id="display" /><br/>
+
+                        <p:outputLabel for="status" value="Status:" />
+                        <p:selectBooleanCheckbox id="status" value="#{courseBean.course.status}" required="true" label="Status" />
+
+                        <p:outputLabel for="hours" value="Hours:" />
+                        <p:inputText id="hours" value="#{courseBean.course.hours}" required="true" label="Hours" maxlength="5" />
+
+                        <p:outputLabel for="releaseDate" value="Release Date : " />
+                        <p:calendar id="releaseDate" value="#{courseBean.course.releaseDate}" effect="fold" required="true" label="Release Date " />
+
+                        <p:outputLabel for="image" value="Image:" />
+                        <p:inputText id="image" value="#{courseBean.course.image}" required="true" label="Image" maxlength="50" />
+
+                        <p:outputLabel for="mode" value="Mode" />
+                        <p:inputText id="mode" value="#{courseBean.course.mode}" required="true" label="Mode" maxlength="50"/>
+
+                        <p:outputLabel for="price" value="Price:" />
+                        <p:inputText id="price" value="#{courseBean.course.price}" required="true" label="Price" maxlength="15"/>
+
+                        <p:outputLabel for="createDate" value="Create Date : " />
+                        <p:calendar id="createDate" value="#{courseBean.course.createDate}" effect="fold" disabled="true" required="true" label="Create Date" />
+
+                        <p:outputLabel for="createBy" value="Create By:" />
+                        <p:inputText id="createBy" value="#{courseBean.course.createdBy}" disabled="true" required="true" label="Create By" maxlength="50" />
+
+                        <p:outputLabel for="updateDate" value="Update Date : " />
+                        <p:calendar id="updateDate" value="#{courseBean.course.updatedDate}" effect="fold" required="true" label="Update Date" />
+
+                        <p:outputLabel for="updateBy" value="Update By:" />
+                        <p:inputText id="updateBy" value="#{courseBean.course.updatedBy}" required="true" label="Update By" maxlength="50" />
+                    </h:panelGrid>
+
+                    <p:separator />
+
+                    <p:commandButton value="Submit" update=":coursesForm:msgs" icon="ui-icon-check" actionListener="#{courseBean.updateCourse}" />
+                </p:panel>
+            </p:dialog>  
+
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog> 
+
+
+        </h:form>
+
+    </h:body>
+</html>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- editado con XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) por Jorge Heredia (Itehl Consulting) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+        xmlns:tns="http://itehl.com/fwk/schema/dynamicattributetype/v1/" 
+xmlns:com="http://itehl.com/fwk/schema/commontype/v1/" 
+        xmlns:dvf="http://itehl.com/fwk/schema/dynamicvaluetype/v1/" 
+         xmlns:ent="http://itehl.com/fwk/schema/entitytype/v1/"
+targetNamespace="http://itehl.com/fwk/schema/dynamicattributetype/v1/"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<annotation>
+		<documentation>
+      Este tipo de dato representa la información de los de los  atributos dinamicos que tienen las entidades dinamicas.
+    </documentation>
+	</annotation>
+	
+	<import namespace="http://itehl.com/fwk/schema/commontype/v1/" schemaLocation="../Utility/CommonType.xsd"/>
+	<import namespace="http://itehl.com/fwk/schema/dynamicvaluetype/v1/" schemaLocation="DynamicValueType.xsd"/>
+  <import namespace="http://itehl.com/fwk/schema/entitytype/v1/" schemaLocation="EntityType.xsd"/>
+	
+	<complexType name="DynamicAttributeType">
+    <complexContent>
+      <extension base="ent:EntityType">
+        <sequence>
+			<element name="EntityGuid" type="string"/>
+			<element name="Name" type="string"/>
+			<element name="Description" type="string"/>
+		
+			<element name="DynamicValueType" type="dvf:DynamicValueType"/>
+        </sequence>
+      </extension>
+    </complexContent>
+	</complexType>
+	<element name="DynamicAttributeTypeMsg">
+		<complexType>
+			<sequence>
+				<element name="DynamicAttribute" type="tns:DynamicAttributeType"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="deleteDynamicAttributeRequestType">
+		<complexType>
+			<sequence>
+				<element name="Guid" type="string"/>
+				<element name="UserGuid" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="DeleteDynamicAttributeResponseType">
+		<complexType>
+			<sequence>
+				<element name="DynamicAttribute" type="boolean"/>
+			</sequence>
+		</complexType>
+	</element>
+<!--GetDynamicAttributeById-->	
+  <element name="GetDynamicAttributeByIdRequestType">
+	<complexType>
+	<sequence>    <element name="Guid" type="string"/>
+              <element name="UserGuid" type="string"/>
+	</sequence>
+	</complexType>
+	</element>
+	<element name="GetDynamicAttributeByIdResponseType">
+	<complexType>
+	<sequence>
+	<element name="DynamicAttribute" type="tns:DynamicAttributeType" maxOccurs="unbounded"/>
+	</sequence>
+		</complexType>
+	</element>
+  <!--GetDynamicAttributeByName-->
+  <element name="GetDynamicAttributeByNameRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Name" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GetDynamicAttributeByNameResponseType">
+    <complexType>
+      <sequence>
+        <element name="DynamicAttribute" type="tns:DynamicAttributeType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+  <!--GetDynamicAttributeByDescription-->
+  <element name="GetDynamicAttributeByIDescriptionRequestType">
+    <complexType>
+      <sequence>
+         <element name="UserGuid" type="string"/>
+        <element name="Description" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GetDynamicAttributeByDescriptionResponseType">
+    <complexType>
+      <sequence>
+        <element name="DynamicAttribute" type="tns:DynamicAttributeType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--GetDynamicAttributeByEntityGuid-->
+  <element name="GetDynamicAttributeByIEntityGuidRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="EntityGuid" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GetDynamicAttributeByEntityGuidResponseType">
+    <complexType>
+      <sequence>
+        <element name="DynamicAttribute" type="tns:DynamicAttributeType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+  <!--GetDynamicAttributeByType-->
+  <element name="GetDynamicAttributeByITypeRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Type" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GetDynamicAttributeByTypeResponseType">
+    <complexType>
+      <sequence>
+        <element name="DynamicAttribute" type="tns:DynamicAttributeType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--GetDynamicAttributeByStatus-->
+  <element name="GetDynamicAttributeByIStatusRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Status" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GetDynamicAttributeByStatusResponseType">
+    <complexType>
+      <sequence>
+        <element name="DynamicAttribute" type="tns:DynamicAttributeType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--GetDynamicAttributeByDynamicParams-->
+  <element name="GetDynamicAttributeByIDynamicParamsRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="DynamicParams" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GetDynamicAttributeByDynamicParamsResponseType">
+    <complexType>
+      <sequence>
+        <element name="DynamicAttribute" type="tns:DynamicAttributeType" maxOccurs="unbounded"/>
+      </sequence>
+    </complexType>
+  </element>
+
+
+</schema>

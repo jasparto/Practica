@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="/Info/LaboratorioM11/Contract/esquema/Education/Entity/Contract/CourseES.wsdl" uri="wsdl/CourseES.wsdl"/>
+    <system systemId="/Info/LaboratorioM11/Contract/esquema/Education/Entity/CourseType.xsd" uri="CourseType.xsd"/>
+    <system systemId="/Info/LaboratorioM11/Contract/esquema/Framework/Utility/CommonType.xsd" uri="../../Framework/Utility/CommonType.xsd"/>
+    <system systemId="/Info/LaboratorioM11/Contract/esquema/Framework/Entity/CatalogType.xsd" uri="../../Framework/Entity/CatalogType.xsd"/>
+    <system systemId="/Info/LaboratorioM11/Contract/esquema/Education/Entity/TopicsType.xsd" uri="TopicsType.xsd"/>
+    <system systemId="/Info/LaboratorioM11/Contract/esquema/Framework/Entity/DynamicAttributeType.xsd" uri="../../Framework/Entity/DynamicAttributeType.xsd"/>
+    <system systemId="f/Info/LaboratorioM11/Contract/esquema/Framework/Entity/EntityType.xsd" uri="../../Framework/Entity/EntityType.xsd"/>
+    <system systemId="/Info/LaboratorioM11/Contract/esquema/Education/Entity/modeType.xsd" uri="modeType.xsd"/>
+    <system systemId="/Info/LaboratorioM11/Contract/esquema/Education/Entity/AffiliateType.xsd" uri="AffiliateType.xsd"/>
+    <system systemId="/Info/LaboratorioM11/Contract/esquema/Framework/Entity/DynamicValueType.xsd" uri="../../Framework/Entity/DynamicValueType.xsd"/>
+</catalog>
