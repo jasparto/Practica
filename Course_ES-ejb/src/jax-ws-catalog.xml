@@ -10,4 +10,15 @@
     <system systemId="file:/C:/OU_Bsilva/Contract/esquema/Education/Entity/modeType.xsd" uri="modeType.xsd"/>
     <system systemId="file:/C:/OU_Bsilva/Contract/esquema/Education/Entity/AffiliateType.xsd" uri="AffiliateType.xsd"/>
     <system systemId="file:/C:/OU_Bsilva/Contract/esquema/Framework/Entity/DynamicValueType.xsd" uri="../../Framework/Entity/DynamicValueType.xsd"/>
+    <system systemId="file:/C:/julianoDesarrollo/Practica/SOAP/Education/Entity/Contract/VademecumES.wsdl" uri="wsdl/VademecumES.wsdl"/>
+    <system systemId="file:/C:/julianoDesarrollo/Practica/SOAP/Education/Entity/VademecumType.xsd" uri="VademecumType.xsd"/>
+    <system systemId="file:/C:/julianoDesarrollo/Practica/SOAP/Framework/Utility/CommonType.xsd" uri="../../Framework/Utility/CommonType.xsd"/>
+    <system systemId="file:/C:/julianoDesarrollo/Practica/SOAP/Framework/Entity/CatalogType.xsd" uri="../../Framework/Entity/CatalogType.xsd"/>
+    <system systemId="file:/C:/julianoDesarrollo/Practica/SOAP/Education/Entity/TopicsType.xsd" uri="TopicsType.xsd"/>
+    <system systemId="file:/C:/julianoDesarrollo/Practica/SOAP/Framework/Entity/DynamicAttributeType.xsd" uri="../../Framework/Entity/DynamicAttributeType.xsd"/>
+    <system systemId="file:/C:/julianoDesarrollo/Practica/SOAP/Framework/Entity/EntityType.xsd" uri="../../Framework/Entity/EntityType.xsd"/>
+    <system systemId="file:/C:/julianoDesarrollo/Practica/SOAP/Education/Entity/modeType.xsd" uri="modeType.xsd"/>
+    <system systemId="file:/C:/julianoDesarrollo/Practica/SOAP/Education/Entity/AffiliateType.xsd" uri="AffiliateType.xsd"/>
+    <system systemId="file:/C:/julianoDesarrollo/Practica/SOAP/Education/Entity/CourseType.xsd" uri="CourseType.xsd"/>
+    <system systemId="file:/C:/julianoDesarrollo/Practica/SOAP/Framework/Entity/DynamicValueType.xsd" uri="../../Framework/Entity/DynamicValueType.xsd"/>
 </catalog>

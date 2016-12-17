@@ -127,7 +127,7 @@
   <wsdl:message name="GetCoursesByNameMsgRequest">
     <wsdl:part name="requestParam" element="course:GetCoursesByNameRequestType"/>
   </wsdl:message>
-  <wsdl:message name="GetCoursesByNameMsgResponse">
+  <wsdl:message name="GetCourasesByNameMsgResponse">
     <wsdl:part name="responseParam" element="course:GetCoursesByNameResponseType"/>
   </wsdl:message>
 

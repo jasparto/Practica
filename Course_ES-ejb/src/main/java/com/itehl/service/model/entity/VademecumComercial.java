@@ -29,7 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "VademecumComercial.findAll", query = "SELECT v FROM VademecumComercial v")
-    , @NamedQuery(name = "VademecumComercial.findByCodComercial", query = "SELECT v FROM VademecumComercial v WHERE v.codComercial = :codComercial")
+    , @NamedQuery(name = "VademecumComercial.findByCodComercial", query = "SELECT v FROM VademecumComercial v WHERE v.codComercial = :request")
     , @NamedQuery(name = "VademecumComercial.findByNombre", query = "SELECT v FROM VademecumComercial v WHERE v.nombre = :nombre")
     , @NamedQuery(name = "VademecumComercial.findByCodCum", query = "SELECT v FROM VademecumComercial v WHERE v.codCum = :codCum")
     , @NamedQuery(name = "VademecumComercial.findByFechaElaboracion", query = "SELECT v FROM VademecumComercial v WHERE v.fechaElaboracion = :fechaElaboracion")

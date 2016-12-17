@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- editado con XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) por Jorge Heredia (Itehl Consulting) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://itehl.com/education/schema/vademecumtype/v1/"
+        xmlns:top="http://itehl.com/education/schema/topicstype/v1/"
+        xmlns:daf="http://itehl.com/fwk/schema/dynamicattributetype/v1/"
+        xmlns:cat="http://itehl.com/fwk/schema/catalogtype/v1/"
+        xmlns:com="http://itehl.com/fwk/schema/commontype/v1/"
+        xmlns:ent="http://itehl.com/fwk/schema/entitytype/v1/"
+        xmlns:mod="http://itehl.com/education/schema/modalitytype/v1/"
+        xmlns:afi="http://itehl.com/education/schema/affiliatetype/v1/"
+  
+        targetNamespace="http://itehl.com/education/schema/vademecumtype/v1/" elementFormDefault="qualified"
+        attributeFormDefault="unqualified">
+
+    <annotation>
+        <documentation>
+            Este tipo de dato representa la información del vademecum, el cual representa el listado de medicamentos.
+        </documentation>
+    </annotation>
+    <import namespace="http://itehl.com/fwk/schema/catalogtype/v1/"
+            schemaLocation="../../Framework/Entity/CatalogType.xsd"/>
+    <import namespace="http://itehl.com/education/schema/topicstype/v1/"
+            schemaLocation="TopicsType.xsd"/>
+    <import namespace="http://itehl.com/fwk/schema/commontype/v1/"
+            schemaLocation="../../Framework/Utility/CommonType.xsd"/>
+    <import namespace="http://itehl.com/fwk/schema/dynamicattributetype/v1/"
+            schemaLocation="../../Framework/Entity/DynamicAttributeType.xsd"/>
+    <import namespace="http://itehl.com/fwk/schema/entitytype/v1/"
+            schemaLocation="../../Framework/Entity/EntityType.xsd"/>
+    <import namespace="http://itehl.com/education/schema/modalitytype/v1/"
+            schemaLocation="modeType.xsd"/>
+    <import namespace="http://itehl.com/education/schema/affiliatetype/v1/"
+            schemaLocation="AffiliateType.xsd"/>
+
+    <complexType name="VademecumType">
+        <complexContent>
+            <extension base="ent:EntityType">
+                <sequence>
+                    <element name="CodComercial" type="string"/>
+                    <element name="Nombre" type="string"/>
+                    <element name="CodCum" type="string"/>
+                    <element name="FechaElaboracion" type="dateTime"/>
+                    <element name="FechaVencimiento" type="dateTime"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <!--Msg -->
+    <element name="VademecumTypeMsg">
+        <complexType>
+            <sequence>
+                <element name="vademecum" type="tns:VademecumType"/>
+            </sequence>
+        </complexType>
+    </element>
+    
+    <!--GetMedicine By CodComercial -->
+    <element name="GetMedicineByCodComercialRequestType">
+        <complexType>
+            <sequence>
+                <element name="CodComercial" type="string"/>
+            </sequence>
+        </complexType>
+    </element>
+    
+    <element name="GetMedicineByCodComercialResponseType">
+        <complexType>
+            <sequence>
+                <element name="Vademecum" type="tns:VademecumType"/>
+            </sequence>
+        </complexType>
+    </element>
+    
+    
+</schema>

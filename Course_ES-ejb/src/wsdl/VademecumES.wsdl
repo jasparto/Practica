@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wsdl:definitions xmlns:tns="http://itehl.com/education/contract/es/vademecumservice/v1/"
+                  xmlns:com="http://itehl.com/fwk/schema/commontype/v1/"
+                  xmlns:course="http://itehl.com/education/schema/vademecumtype/v1/" 
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:ns="http://itehl.com/education/schema/topicstype/v1/" 
+                  xmlns:ns1="http://itehl.com/fwk/schema/catalogtype/v1/"
+                  xmlns:ns2="http://itehl.com/fwk/schema/dynamicattributetype/v1/" 
+                  xmlns:ns3="http://itehl.com/fwk/schema/dynamicvaluetype/v1/"
+                  xmlns:ns4="http://itehl.com/fwk/schema/entitytype/v1/" 
+                  name="ICourseES" targetNamespace="http://itehl.com/education/contract/es/vademecumservice/v1/">
+    
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://itehl.com/iteducation/schema/">
+            <xsd:import namespace="http://itehl.com/education/schema/vademecumtype/v1/" schemaLocation="../VademecumType.xsd"/>
+            <xsd:import namespace="http://itehl.com/fwk/schema/commontype/v1/" schemaLocation="../../../Framework/Utility/CommonType.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+  
+    <wsdl:message name="CreateMedicineMsgRequest">
+        <wsdl:part name="requestParam" element="course:VademecumTypeMsg"/>
+    </wsdl:message>	
+    <wsdl:message name="CreateMedicineMsgResponse">
+        <wsdl:part name="responseParam" element="com:txStatusType"/>
+    </wsdl:message>
+    
+    <wsdl:message name="BusinessExceptionMsg">
+        <wsdl:part name="exception" element="com:BusinessExceptionType">
+        </wsdl:part>
+    </wsdl:message>
+    
+    <wsdl:message name="GetMedicineByCodComercialMsgRequest">
+        <wsdl:part name="requestParam" element="course:GetMedicineByCodComercialRequestType"/>
+    </wsdl:message>
+    
+    <wsdl:message name="GetMedicineByCodComercialMsgResponse">
+        <wsdl:part name="responseParam" element="course:GetMedicineByCodComercialResponseType"/>
+    </wsdl:message>
+	
+    <wsdl:portType name="VademecumESInterface">
+        
+        <wsdl:operation name="CreateMedicine">
+            <wsdl:input message="tns:CreateMedicineMsgRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:CreateMedicineMsgResponse">
+            </wsdl:output>
+            <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+            </wsdl:fault>
+        </wsdl:operation>
+        
+        <wsdl:operation name="GetMedicineByCodComercial">
+            <wsdl:input message="tns:GetMedicineByCodComercialMsgRequest">
+            </wsdl:input>
+            <wsdl:output message="tns:GetMedicineByCodComercialMsgResponse">
+            </wsdl:output>
+            <wsdl:fault name="businessException" message="tns:BusinessExceptionMsg">
+            </wsdl:fault>
+        </wsdl:operation>
+  
+    </wsdl:portType>
+    
+    <wsdl:binding name="VademecumBinding" type="tns:VademecumESInterface">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <!-- 1 Create medicine -->
+        <wsdl:operation name="CreateMedicine">
+            <soap:operation soapAction="http://itehl.com/education/contract/es/vademecumservice/v1/CreateMedicine"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="businessException">
+                <soap:fault name="businessException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        
+        <!--2 Get Medicine by cod comercial-->
+        <wsdl:operation name="GetMedicineByCodComercial">
+            <soap:operation soapAction="http://itehl.com/education/contract/es/courseservice/v1/GetMedicineByCodComercial"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="businessException">
+                <soap:fault name="businessException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+              
+    </wsdl:binding>
+    <wsdl:service name="VademecumES">
+        <wsdl:port name="VademecumPort" binding="tns:VademecumBinding">
+            <soap:address location="http://localhost:8080/VademecumES/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

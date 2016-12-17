@@ -139,6 +139,22 @@
                             <id>wsimport-generate-CourseES</id>
                             <phase>generate-sources</phase>
                         </execution>
+                         <execution>
+                              <goals>
+                                   <goal>wsimport</goal>
+                              </goals>
+                              <configuration>
+                                   <wsdlFiles>
+                                        <wsdlFile>VademecumES.wsdl</wsdlFile>
+                                   </wsdlFiles>
+                                   <vmArgs>
+                                        <vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
+                                   </vmArgs>
+                                   <staleFile>${project.build.directory}/jaxws/stale/VademecumES.stale</staleFile>
+                              </configuration>
+                              <id>wsimport-generate-VademecumES</id>
+                              <phase>generate-sources</phase>
+                         </execution>
                     </executions>
                     <dependencies>
                         <dependency>
