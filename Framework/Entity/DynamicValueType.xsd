@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- editado con XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) por Jorge Heredia (Itehl Consulting) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:tns="http://itehl.com/fwk/schema/dynamicvaluetype/v1/"
+  xmlns:com="http://itehl.com/fwk/schema/commontype/v1/"
+  targetNamespace="http://itehl.com/fwk/schema/dynamicvaluetype/v1/"
+  xmlns:ent="http://itehl.com/fwk/schema/entitytype/v1/" elementFormDefault="qualified"
+  attributeFormDefault="unqualified">
+  <annotation>
+    <documentation>
+      Este tipo de dato representa la información de los de los valores que estan relacionados con los tributos y entidades dinamicas.
+    </documentation>
+  </annotation>
+  <import namespace="http://itehl.com/fwk/schema/commontype/v1/"
+    schemaLocation="../Utility/CommonType.xsd"/>
+  <import namespace="http://itehl.com/fwk/schema/entitytype/v1/" schemaLocation="EntityType.xsd"/>
+  <complexType name="DynamicValueType">
+    <complexContent>
+      <extension base="ent:EntityType">
+        <sequence>
+
+          <element name="DynamicAttributeGuid" type="string"/>
+          <element name="Name" type="string"/>
+          <element name="Description" type="string"/>
+          <element name="Value" type="string"/>
+
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+  <element name="DynamicValueTypeMsg">
+    <complexType>
+      <sequence>
+        <element name="DynamicValue" type="tns:DynamicValueType"/>
+      </sequence>
+    </complexType>
+  </element>
+  <!--GetDynamicValueById-->
+  <element name="GetDynamicValueByIdRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Guid" type="string"/>
+
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GetDynamicValueByIdResponseType">
+    <complexType>
+      <sequence>
+        <element name="DynamicValueType" type="tns:DynamicValueType"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--GetDynamicValueByAttributeGuid-->
+  <element name="GetDynamicValueByAttributeGuidRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="AttributeGuid" type="string"/>
+
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GetDynamicValueByAttributeGuidResponseType">
+    <complexType>
+      <sequence>
+        <element name="DynamicValueType" type="tns:DynamicValueType"/>
+      </sequence>
+    </complexType>
+  </element>
+  <!--GetDynamicValueByDescription  -->
+  <element name="GetDynamicValueByDescriptionRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Description" type="string"/>
+
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GetDynamicValueByDescriptionResponseType">
+    <complexType>
+      <sequence>
+        <element name="DynamicValueType" type="tns:DynamicValueType"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <!--GetDynamicValueByValue-->
+  <element name="GetDynamicValueByValueRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Value" type="string"/>
+
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GetDynamicValueByValueResponseType">
+    <complexType>
+      <sequence>
+        <element name="DynamicValueType" type="tns:DynamicValueType"/>
+      </sequence>
+    </complexType>
+  </element>
+  <!--GetDynamicValueByStatus-->
+  <element name="GetDynamicValueByStatusRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="Status" type="boolean"/>
+
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GetDynamicValueByStatusResponseType">
+    <complexType>
+      <sequence>
+        <element name="DynamicValueType" type="tns:DynamicValueType"/>
+      </sequence>
+    </complexType>
+  </element>
+  <!--GetDynamicValueByDynamicParams-->
+  <element name="GetDynamicValueByDynamicParamsRequestType">
+    <complexType>
+      <sequence>
+        <element name="UserGuid" type="string"/>
+        <element name="DynamicParams" type="string" maxOccurs="unbounded"/>
+
+      </sequence>
+    </complexType>
+  </element>
+  <element name="GetDynamicValueByDynamicParamsResponseType">
+    <complexType>
+      <sequence>
+        <element name="DynamicValueType" type="tns:DynamicValueType"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="DeleteDynamicValueRequestType">
+    <complexType>
+      <sequence>
+        <element name="Guid" type="string"/>
+        <element name="UserGuid" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="DeleteDynamicValueResponseType">
+    <complexType>
+      <sequence>
+        <element name="Status" type="boolean"/>
+      </sequence>
+    </complexType>
+  </element>
+</schema>

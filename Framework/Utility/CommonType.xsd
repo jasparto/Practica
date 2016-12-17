@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- editado con XMLSpy v2014 rel. 2 sp1 (http://www.altova.com) por Jorge Heredia (Itehl Consulting) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://itehl.com/fwk/schema/commontype/v1/" 
+        
+        targetNamespace="http://itehl.com/fwk/schema/commontype/v1/"
+        elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<element name="BusinessExceptionType">
+		<complexType>
+			<sequence>
+				<element name="message" type="string"/>
+				<element name="class" type="string"/>
+				<element name="stacktrace" type="string"/>
+				<element name="details" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="txStatusType">
+		<complexType>
+			<sequence>
+				<element name="status" type="boolean"/>
+			</sequence>
+		</complexType>
+	</element>
+	<complexType name="detailsType" mixed="true">
+		<sequence>
+			<any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+</schema>
